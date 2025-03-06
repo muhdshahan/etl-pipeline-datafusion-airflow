@@ -47,8 +47,8 @@ The data is **synthetically generated using the Faker library**, stored as a **C
 - Created a **Cloud Data Fusion pipeline** to transform the data.
 - Applied transformations:
     - **Masked the salary** to protect sensitive information.
-    ✅ **Hashed the email** using SHA-256 for privacy.
-    ✅ **Concatenated first name and last name** into a `full_name` column.
+    - **Hashed the email** using SHA-256 for privacy.
+    - **Concatenated first name and last name** into a `full_name` column.
 - Configured the pipeline to write processed data to BigQuery.
 
 ---
@@ -63,23 +63,23 @@ The data is **synthetically generated using the Faker library**, stored as a **C
 ### **Step 5: Data Visualization with Looker Studio**
 - Connected **Looker Studio** to BigQuery.
 - Created interactive dashboards with:
-  📌 **Filters for exploring data**
-  🔎 **Tables displaying key insights**
+  - **Filters for exploring data**
+  - **Tables displaying key insights**
 
 ---
 
 ### **Step 6: Automating with Apache Airflow**
 - Created an **Airflow DAG** (`dag`) with two tasks:
-  1️⃣ **Extract Data** – Load data from GCS to BigQuery.
-  2️⃣ **Run Cloud Data Fusion pipeline** – Trigger the transformation process.
+  1. **Extract Data** – Load data from GCS to BigQuery.
+  2. **Run Cloud Data Fusion pipeline** – Trigger the transformation process.
 
 ---
 
 ## Final Output
-✅ **Data successfully extracted, transformed, and loaded into BigQuery**
-✅ **Looker Studio dashboard visualizing processed data**
-✅ **Automated ETL pipeline using Apache Airflow**
-✅ **Data privacy maintained through salary masking and email hashing**
+- **Data successfully extracted, transformed, and loaded into BigQuery**
+- **Looker Studio dashboard visualizing processed data**
+- **Automated ETL pipeline using Apache Airflow**
+- **Data privacy maintained through salary masking and email hashing**
 
 ---
 
