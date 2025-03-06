@@ -46,7 +46,7 @@ The data is **synthetically generated using the Faker library**, stored as a **C
 ### **Step 3: Data Processing with Cloud Data Fusion (Transform Phase)**
 - Created a **Cloud Data Fusion pipeline** to transform the data.
 - Applied transformations:
-    ✅ **Masked the salary** to protect sensitive information.
+    - **Masked the salary** to protect sensitive information.
     ✅ **Hashed the email** using SHA-256 for privacy.
     ✅ **Concatenated first name and last name** into a `full_name` column.
 - Configured the pipeline to write processed data to BigQuery.
