@@ -1,34 +1,99 @@
-# ETL Project with Data Fusion, Airflow, and BigQuery
+# ETL Data Pipeline on Google Cloud with Cloud Data Fusion & Apache Airflow
 
-## Description
-This repository contains code and configuration files for an Extract, Transform, Load (ETL) project using Google Cloud Data Fusion for data extraction, Apache Airflow/Composer for orchestration, and Google BigQuery for data loading.
+## Project Overview  
+This project demonstrates how to build an **ETL (Extract, Transform, Load) data pipeline** on **Google Cloud Platform (GCP)** using:
+- **Google Cloud Data Fusion** for data transformation
+- **Apache Airflow** for automation
+- **BigQuery** for data storage and analysis
+- **Looker Studio** for visualization
 
-## Overview
-The project aims to perform the following tasks:
+The data is **synthetically generated using the Faker library**, stored as a **CSV file**, and uploaded to **Google Cloud Storage (GCS)**. The pipeline extracts, transforms, and loads data into **BigQuery**, and an automated **Airflow DAG** ensures scheduled execution.
 
-Data Extraction: Extract data using python.
-Data Masking: Apply data masking & encoding techniques to sensitive information in Cloud Data Fusion before loading it into BigQuery.
-Data Loading: Load transformed data into Google BigQuery tables.
-Orchestration: Automate complete Data pipeline using Airflow ( Cloud Composer )
+---
 
-## Features
-- Predicts insurance charges based on BMI, number of children, smoking status, age category, and gender.
-- Serverless API accessible via HTTP POST requests.
-  
-## Technologies
-- Python (Pandas, Scikit-learn, NumPy), GCP (Cloud Run/Functions, Cloud Storage), Functions Framework.
+## Technologies Used  
+- **Google Cloud Platform (GCP)**
+  - Google Cloud Storage (GCS)
+  - Cloud Data Fusion
+  - BigQuery
+  - Looker Studio
+  - Cloud Composer (Apache Airflow)
+- **Python** (for data generation & Airflow DAG)
+- **Faker Library** (to create synthetic data)
+- **SQL** (for querying in BigQuery)
 
-## Installation 
-- Clone this repository, install dependencies with **pip install -r requirements.txt**, and deploy using GCP CLI or Console.
-
-## Usage
-- Test the API with **python test.py** after updating the URL.
-
-## Deployment Instructions
-- Deploy manually in GCP Cloud Run (or Functions if available) with the inline editor or CLI: **gcloud run deploy predict-insurance-manual --region us-central1 --allow-unauthenticated --source**
+---
 
 ## Architecture
 ![Architecture](https://github.com/muhdshahan/etl-pipeline-datafusion-airflow/blob/main/Architecture.png)
+
+---
+
+## Project Steps
+
+### **Step 1: Data Generation (Extract Phase)**
+- Used the **Faker library** to generate synthetic employee data.
+- Created a **CSV file** containing fields like `first_name`, `last_name`, `email`, `address`, and `salary`.
+- Saved the data locally and uploaded it to **Google Cloud Storage (GCS)**.
+
+---
+
+### **Step 2: Uploading Data to Google Cloud Storage (GCS)**
+- Uploaded the CSV file to GCS to be used in the ETL pipeline.
+
+---
+
+### **Step 3: Data Processing with Cloud Data Fusion (Transform Phase)**
+- Created a **Cloud Data Fusion pipeline** to transform the data.
+- Applied transformations:
+  ✅ **Masked the salary** to protect sensitive information.
+  ✅ **Hashed the email** using SHA-256 for privacy.
+  ✅ **Concatenated first name and last name** into a `full_name` column.
+- Configured the pipeline to write processed data to BigQuery.
+
+---
+
+### **Step 4: Loading Data into BigQuery (Load Phase)**
+- Created a **BigQuery dataset (`employee`)**.
+- Defined a table schema (`emp_data`).
+- Verified data integrity through SQL queries.
+
+---
+
+### **Step 5: Data Visualization with Looker Studio**
+- Connected **Looker Studio** to BigQuery.
+- Created interactive dashboards with:
+  📌 **Filters for exploring data**
+  🔎 **Tables displaying key insights**
+
+---
+
+### **Step 6: Automating with Apache Airflow**
+- Created an **Airflow DAG** (`dag`) with two tasks:
+  1️⃣ **Extract Data** – Load data from GCS to BigQuery.
+  2️⃣ **Run Cloud Data Fusion pipeline** – Trigger the transformation process.
+
+---
+
+## Final Output
+✅ **Data successfully extracted, transformed, and loaded into BigQuery**
+✅ **Looker Studio dashboard visualizing processed data**
+✅ **Automated ETL pipeline using Apache Airflow**
+✅ **Data privacy maintained through salary masking and email hashing**
+
+---
+
+## Setup & Deployment
+1. **Clone the repository:**
+2. **Install dependencies:**
+3. **Run the data generation script.**
+4. **Upload the CSV to GCS.**
+5. **Deploy Cloud Data Fusion pipeline.**
+6. **Run the Airflow DAG.**
+7. **Check data in BigQuery.**
+8. **Create a Looker Studio dashboard.**
+
+---
 
 ## Contact
 For questions, contact me at **shahuuraff@gmail.com** or connect on LinkedIn.
